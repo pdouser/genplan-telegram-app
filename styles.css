@@ -1,1 +1,17 @@
-.btn-primary{background: #e50d43; color:#fff;}
+.btn-primary, .btn-primary:hover, .btn-primary:visited{background: #e50d43; color:#fff; border-color: #e50d43;}
+
+.btn-primary:active
+{
+    background-color:grey !important;
+    border-color: #e50d43;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 1.5rem;
+  background-color: #e50d43;
+ }
