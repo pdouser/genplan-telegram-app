@@ -1,41 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Genplan</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-   <div class="container-fluid py-4">
-    <h1>Init</h1>
-    <div class="mb-3">
-      <label for="" class="form-label">Date</label>
-      <input type="date" class="form-control" name="test" id="calender" aria-describedby="helpId" placeholder="" />
-      <small id="helpId" class="form-text text-muted">Request</small>
-    </div>
 
-    <div class="d-grid gap-2">
-      <button type="button" class="btn btn-dark rounded-0" onclick="showMessage()">
-        Press
-      </button>
-    </div>
-  </div>
+  <div class="container px-5 py-3" id="featured-3">
+    <h2 class="pb-2 border-bottom">Задачи</h2>
+    <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
+      <div class="feature col">
 
-  <script>
-  window.onload = function(){
-    dateFormat();
-  }
-  </script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="scripts.js"></script>
+        <h3 class="fs-2 text-body-emphasis">
+          <i class="bi bi-bar-chart-line"></i> Выполнение плана
+        </h3>
+        <p>Столбчатая диаграмма "план-факт" по выпуску готовой продукции с обновлением данных в реальном времени.</p>
+
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text">Дата запроса</span>
+          <input type="date" id="barchart-request-date" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm">
+        </div>
+
+        <label for="" class="form-label">Фильтр</label>
+        <select class="form-select form-select-md" name="" id="">
+          <option value="1">БЗГА</option>
+          <option value="2">БЗГА напольные</option>
+          <option value="3">БЗГА столы встраиваемые</option>
+          <option value="4">ГТ</option>
+          <option value="5">ГТ напольные</option>
+          <option value="6">ГТ настольные</option>
+          <option value="7">ГТ воздухоочистители</option>
+          <option value="8">ГТ духовки</option>
+        </select>
+
+        <div class="d-grid gap-2 py-4">
+          <button type="button" name="" id="" class="btn btn-primary rounded-0" onclick="showAlert()">Применить</button>
+        </div>
+
+        <script>
+          window.onload = function () {
+            dateFormat();
+          }
+          function showAlert() {
+            var WebApp = window.Telegram.WebApp;
+            WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
+          }
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <script src="scripts.js"></script>
 </body>
 
 </html>
