@@ -71,8 +71,15 @@
 
           let btn = document.getElementById("barchart-apply");
 
-          btn.onClick(() => {
+          btn.addEventListener("click", () => {
             alert('hello');
+            let requestDate = document.getElementById("barchart-request-date").value;
+            let selectedCriteria = document.getElementById("barchart-criteria-filter").value;
+            let data = {
+              localDate: new Date(requestDate).toISOString().substring(0, 10),
+              criteria: selectedCriteria
+            };
+            tg.sendData(JSON.stringify(data));
           });
         </script>
 
