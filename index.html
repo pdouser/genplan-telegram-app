@@ -59,6 +59,12 @@
             dateFormat();
           }
 
+          let btn = document.getElementById("btn1")
+          
+          btn.addEventListener("click", ()=> {
+            tg.sendData('some string that we need to send');
+          });
+
           Telegram.WebApp.onEvent('mainButtonClicked', function () {
             tg.sendData('some string that we need to send');
             tg.close();
