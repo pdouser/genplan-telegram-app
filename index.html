@@ -45,17 +45,26 @@
         <div class="d-grid gap-2 py-4">
           <button type="button" name="" id="" class="btn btn-primary rounded-0" onclick="showAlert()">Применить</button>
         </div>
+       <script>
+          let tg = window.Telegram.WebApp;
+          tg.expand();
+          tg.MainButton.show();
+          if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
+          }
 
-        <script>
           window.onload = function () {
             dateFormat();
           }
-          var WebApp = window.Telegram.WebApp;
+
+          Telegram.WebApp.onEvent('mainButtonClicked', function () {
+            tg.sendData("some string that we need to send");
+          });
+
           function showAlert() {
-            WebApp.expand();
-            var name = WebApp.initDataUnsafe.user.first_name;
-            WebApp.showAlert(`Добро пожаловать, ` + name);
-            WebApp.sendData("some string that we need to send"); 
+            var name = tg.initDataUnsafe.user.first_name;
+            tg.showAlert(`Добро пожаловать, ` + name);
+            tg.sendData("some string that we need to send");
           }
         </script>
 
