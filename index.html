@@ -46,27 +46,36 @@
           <button type="button" name="" id="" class="btn btn-primary rounded-0" onclick="showAlert()">Применить</button>
         </div>
         <script>
-       let tg = window.Telegram.WebApp;
+          let tg = window.Telegram.WebApp;
+          let requestDate = document.getElementById("barchart-request-date").value;
+          let selectedCriteria = document.getElementById("barchart-criteria-filter").value;
           tg.expand();
           if (!tg.MainButton.isVisible) {
             tg.MainButton.show();
           }
           tg.MainButton.text = "Применить";
-          tg.MainButton.setParams({"color": "#e50d43"});
+          tg.MainButton.setParams({ "color": "#e50d43" });
+
+          let sendData = {
+            localDate: requestDate,
+            criteria: selectedCriteria
+          }
+
           tg.MainButton.onClick(() => {
-            tg.sendData('some string that we need to send');
+            tg.sendData(JSON.stringify(sendData));
           });
-          
+
           window.onload = function () {
             dateFormat();
           }
 
-          let btn = document.getElementById("btn1")
+          let btn = document.getElementById("barchart-apply")
 
-          btn.addEventListener("click", ()=> {
-            tg.sendData('some string that we need to send');
-          });
-
+          btn.addEventListener("click", sendDataFromButton);
+          function sendDataFromButton() {
+            tg.sendData(JSON.stringify(sendData));
+          }
+          
           Telegram.WebApp.onEvent('mainButtonClicked', function () {
             tg.sendData('some string that we need to send');
             tg.close();
