@@ -15,7 +15,7 @@
 <body>
 
   <div class="container px-5 py-3" id="featured-3">
-    <h2 class="pb-2 border-bottom">Задачи...</h2>
+    <h2 class="pb-2 border-bottom">Задачи</h2>
     <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
       <div class="feature col">
 
@@ -31,7 +31,7 @@
         </div>
 
         <label for="" class="form-label">Фильтр</label>
-        <select class="form-select form-select-md" name="" id="barchart-criteria-filter">
+        <select class="form-select form-select-md" multiple aria-label="multiple select" id="barchart-criteria-filter">
           <option value="1">БЗГА</option>
           <option value="2">БЗГА напольные</option>
           <option value="3">БЗГА столы встраиваемые</option>
@@ -45,39 +45,26 @@
         <div class="d-grid gap-2 py-4">
           <button type="button" name="" id="barchart-apply" class="btn btn-primary rounded-0">Применить</button>
         </div>
+
         <script>
           window.onload = function () {
             dateFormat();
           }
           let tg = window.Telegram.WebApp;
-        
-          tg.expand();
 
-          if (!tg.MainButton.isVisible) {
-            tg.MainButton.show();
-          };          
-          tg.MainButton.text = "Применить";
-          tg.MainButton.setParams({ "color": "#e50d43" });
-          
-          tg.MainButton.onClick(() => {
-            let requestDate = document.getElementById("barchart-request-date").value;
-            let selectedCriteria = document.getElementById("barchart-criteria-filter").value;
-            let data = {
-              localDate: new Date(requestDate).toISOString().substring(0, 10),
-              criteria: selectedCriteria
-            };
-            tg.sendData(JSON.stringify(data));
-          });
+          tg.expand();
 
           let btn = document.getElementById("barchart-apply");
 
           btn.addEventListener("click", () => {
-            alert('hello');
             let requestDate = document.getElementById("barchart-request-date").value;
-            let selectedCriteria = document.getElementById("barchart-criteria-filter").value;
+            let selectedCriteria = document.getElementById("barchart-criteria-filter");
+            const selectedValues = Array.from(selectedCriteria.options)
+              .filter(option => option.selected)
+              .map(option => option.value);
             let data = {
               localDate: new Date(requestDate).toISOString().substring(0, 10),
-              criteria: selectedCriteria
+              criteria: selectedValues
             };
             tg.sendData(JSON.stringify(data));
           });
