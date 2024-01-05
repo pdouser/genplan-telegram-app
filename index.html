@@ -52,7 +52,8 @@
           }
           function showAlert() {
             var WebApp = window.Telegram.WebApp;
-           WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
+            var name = WebApp.initDataUnsafe.user.first_name;
+            WebApp.showAlert(`Добро пожаловать, ` + name);
           }
         </script>
 
