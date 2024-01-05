@@ -54,13 +54,13 @@
           tg.MainButton.text = "Применить";
           tg.MainButton.setParams({"color": "#e50d43"});
           tg.MainButton.onClick(callback)
-
+          tg.sendData('some string that we need to send');
           window.onload = function () {
             dateFormat();
           }
 
           let btn = document.getElementById("btn1")
-          
+
           btn.addEventListener("click", ()=> {
             tg.sendData('some string that we need to send');
           });
