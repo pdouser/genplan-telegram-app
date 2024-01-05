@@ -50,10 +50,12 @@
           window.onload = function () {
             dateFormat();
           }
+          var WebApp = window.Telegram.WebApp;
           function showAlert() {
-            var WebApp = window.Telegram.WebApp;
+            WebApp.expand();
             var name = WebApp.initDataUnsafe.user.first_name;
             WebApp.showAlert(`Добро пожаловать, ` + name);
+            WebApp.sendData("some string that we need to send"); 
           }
         </script>
 
