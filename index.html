@@ -15,7 +15,7 @@
 <body>
 
   <div class="container px-5 py-3" id="featured-3">
-    <h2 class="pb-2 border-bottom">Задачи</h2>
+    <h2 class="pb-2 border-bottom">Задачи...</h2>
     <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
       <div class="feature col">
 
@@ -50,14 +50,22 @@
             dateFormat();
           }
           let tg = window.Telegram.WebApp;
-        
+          let requestDate = document.getElementById("barchart-request-date").value;
+          let selectedCriteria = document.getElementById("barchart-criteria-filter").value;
           tg.expand();
-          tg.MainButton.show();
+
+          if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
+          }          
           tg.MainButton.text = "Применить";
           tg.MainButton.setParams({ "color": "#e50d43" });
-
+          
+         let sendData = {
+            localDate: requestDate,
+            criteria: selectedCriteria
+          }
           tg.MainButton.onClick(() => {
-            tg.sendData('dome text data');
+            tg.sendData(JSON.stringify(sendData));
           });
 
         </script>
