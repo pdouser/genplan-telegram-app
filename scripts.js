@@ -1,11 +1,6 @@
 function dateFormat() {
-  document.getElementById("calender").value = new Date()
+  document.getElementById("barchart-request-date").value = new Date()
     .toISOString()
     .substring(0, 10);
 }
-
-function showMessage() {
-    alert("Pressed");
-  }
-
 
