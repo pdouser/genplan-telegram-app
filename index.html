@@ -50,8 +50,7 @@
             dateFormat();
           }
           let tg = window.Telegram.WebApp;
-          let requestDate = document.getElementById("barchart-request-date").value;
-          let selectedCriteria = document.getElementById("barchart-criteria-filter").value;
+        
           tg.expand();
           if (!tg.MainButton.isVisible) {
             tg.MainButton.show();
@@ -59,13 +58,8 @@
           tg.MainButton.text = "Применить";
           tg.MainButton.setParams({ "color": "#e50d43" });
 
-          let sendData = {
-            localDate: requestDate,
-            criteria: selectedCriteria
-          }
-
           tg.MainButton.onClick(() => {
-            tg.sendData(JSON.stringify(sendData));
+            tg.sendData('dome text data');
           });
 
         </script>
