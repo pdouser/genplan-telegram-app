@@ -15,7 +15,7 @@
 <body>
 
   <div class="container px-5 py-3" id="featured-3">
-    <h2 class="pb-2 border-bottom">Задачи</h2>
+    <h2 class="pb-2 border-bottom">Задачи...</h2>
     <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
       <div class="feature col">
 
@@ -43,7 +43,7 @@
         </select>
 
         <div class="d-grid gap-2 py-4">
-          <button type="button" name="" id="" class="btn btn-primary rounded-0">Применить</button>
+          <button type="button" name="" id="barchart-apply" class="btn btn-primary rounded-0">Применить</button>
         </div>
         <script>
           window.onload = function () {
@@ -68,6 +68,13 @@
           tg.MainButton.onClick(() => {
             tg.sendData(JSON.stringify(data));
           });
+
+          let btn = document.getElementById("barchart-apply");
+
+          btn.addEventListener("click", sendDataFromButton);
+          function sendDataFromButton() {
+            tg.sendData(JSON.stringify(sendData));
+          }
 
         </script>
 
