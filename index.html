@@ -14,66 +14,73 @@
 
 <body>
 
-  <div class="container px-5 py-3" id="featured-3">
+  <div class="container px-5 py-3" id="feature-1">
     <h2 class="pb-2 border-bottom">Задачи</h2>
     <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
-      <div class="feature col">
+      <h3 class="fs-2 text-body-emphasis">
+        <div class="feature-icon text-white rounded-3"><i class="bi bi-bar-chart-line"></i></div>
+        Выполнение плана
+    </div>
+    <p>Столбчатая диаграмма "план-факт" по выпуску готовой продукции с обновлением данных в реальном времени.</p>
 
-        <h3 class="fs-2 text-body-emphasis">
-          <i class="bi bi-bar-chart-line"></i> Выполнение плана
-        </h3>
-        <p>Столбчатая диаграмма "план-факт" по выпуску готовой продукции с обновлением данных в реальном времени.</p>
+    <div class="input-group input-group-sm mb-1">
+      <span class="input-group-text">Дата запроса</span>
+      <input type="date" id="barchart-request-date" class="form-control" aria-label="date input"
+        aria-describedby="inputGroup-sizing-sm">
+    </div>
 
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text">Дата запроса</span>
-          <input type="date" id="barchart-request-date" class="form-control" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm">
-        </div>
+    <div class="mb-1">
+      <label for="" class="form-label">Предприятие</label>
+      <select class="form-select form-select-md" name="" id="barchart-factory">
+        <option value="1">БЗГА</option>
+        <option value="2">ГТ</option>
+      </select>
+    </div>
 
-        <label for="" class="form-label">Фильтр</label>
-        <select class="form-select form-select-md" multiple aria-label="multiple select" id="barchart-criteria-filter">
-          <option value="1">БЗГА</option>
-          <option value="2">БЗГА напольные</option>
-          <option value="3">БЗГА столы встраиваемые</option>
-          <option value="4">ГТ</option>
-          <option value="5">ГТ напольные</option>
-          <option value="6">ГТ настольные</option>
-          <option value="7">ГТ воздухоочистители</option>
-          <option value="8">ГТ духовки</option>
-        </select>
+    <label for="" class="form-label">Категории изделий</label>
+    <select class="form-select form-select-md" multiple aria-label="multiple select" id="barchart-criteria-filter">
+      <option value="1">Напольные плиты</option>
+      <option value="2">Столы встраиваемые</option>
+      <option value="3">Настольные плиты</option>
+      <option value="4">Воздухоочистители</option>
+      <option value="5">Духовки</option>
+    </select>
 
-        <div class="d-grid gap-2 py-4">
-          <button type="button" name="" id="barchart-apply" class="btn btn-primary rounded-0">Применить</button>
-        </div>
+    <div class="d-grid gap-2 py-4">
+      <button type="button" name="" id="barchart-apply" class="btn btn-primary rounded-0">Применить</button>
+    </div>
 
-        <script>
-          window.onload = function () {
-            dateFormat();
-          }
-          let tg = window.Telegram.WebApp;
+    <script>
+      window.onload = function () {
+        dateFormat();
+        let btn = document.getElementById("barchart-apply");
+      }
+      let tg = window.Telegram.WebApp;
 
-          tg.expand();
+      tg.expand();
 
-          let btn = document.getElementById("barchart-apply");
+      let btn = document.getElementById("barchart-apply");
 
-          btn.addEventListener("click", () => {
-            let requestDate = document.getElementById("barchart-request-date").value;
-            let selectedCriteria = document.getElementById("barchart-criteria-filter");
-            const selectedValues = Array.from(selectedCriteria.options)
-              .filter(option => option.selected)
-              .map(option => option.value);
-            let data = {
-              localDate: new Date(requestDate).toISOString().substring(0, 10),
-              criteria: selectedValues
-            };
-            tg.sendData(JSON.stringify(data));
-          });
-        </script>
+      btn.addEventListener("click", () => {
+        let requestDate = document.getElementById("barchart-request-date").value;
+        let selectedCriteria = document.getElementById("barchart-criteria-filter");
+        let selectedFactory = document.getElementById("barchart-factory").value;
+        const selectedValues = Array.from(selectedCriteria.options)
+          .filter(option => option.selected)
+          .map(option => option.text);
+        let data = {
+          localDate: new Date(requestDate).toISOString().substring(0, 10),
+          criteria: selectedValues,
+          factory: selectedFactory
+        };
+        tg.sendData(JSON.stringify(data));
+      });
+    </script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-          crossorigin="anonymous"></script>
-        <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
