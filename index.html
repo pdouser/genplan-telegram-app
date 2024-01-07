@@ -162,7 +162,7 @@
     let tg = window.Telegram.WebApp;
 
     Telegram.WebApp.onEvent('themeChanged', function () {
-      if (tg.ThemeParams.bg_color == "#ffffff") {
+      if (tg.themeParams.bg_color == "#ffffff") {
         document.documentElement.setAttribute('data-bs-theme', 'ligth');
       }
     });
