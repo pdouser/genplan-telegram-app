@@ -161,9 +161,11 @@
     }
     let tg = window.Telegram.WebApp;
 
-    if (tg?.ThemeParams?.bg_color == '#ffffff') {
-      document.documentElement.setAttribute('data-bs-theme', 'dark');
-    }
+    Telegram.WebApp.onEvent('themeChanged', function () {
+      if (tg.ThemeParams.bg_color == "#ffffff") {
+        document.documentElement.setAttribute('data-bs-theme', 'ligth');
+      }
+    });
 
     tg.expand();
     let barChartApplyButton = document.getElementById("barchart-apply");
