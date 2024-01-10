@@ -49,8 +49,8 @@
       <div class="mb-1">
         <label for="" class="form-label">Предприятие</label>
         <select class="form-select form-select-md" name="" id="barchart-factory">
-          <option value="1">БЗГА</option>
-          <option value="2">ГТ</option>
+          <option value="3000">БЗГА</option>
+          <option value="15638">ГТ</option>
         </select>
       </div>
 
@@ -81,20 +81,20 @@
 
       <div class="input-group input-group-sm mb-1">
         <span class="input-group-text">Дата запроса</span>
-        <input type="date" id="barchart-request-date" class="form-control" aria-label="date input"
+        <input type="date" id="debt-request-date" class="form-control" aria-label="date input"
           aria-describedby="inputGroup-sizing-sm">
       </div>
 
       <div class="mb-1">
         <label for="" class="form-label">Предприятие</label>
-        <select class="form-select form-select-md" name="" id="barchart-factory">
-          <option value="1">БЗГА</option>
-          <option value="2">ГТ</option>
+        <select class="form-select form-select-md" name="" id="debt-factory">
+          <option value="3000">БЗГА</option>
+          <option value="15638">ГТ</option>
         </select>
       </div>
 
       <label for="" class="form-label">Категории изделий</label>
-      <select class="form-select form-select-md" multiple aria-label="multiple select" id="barchart-criteria-filter">
+      <select class="form-select form-select-md" multiple aria-label="multiple select" id="debt-criteria-filter">
         <option value="1" selected>Напольные плиты</option>
         <option value="2">Столы встраиваемые</option>
         <option value="3">Настольные плиты</option>
@@ -103,7 +103,7 @@
       </select>
 
       <div class="d-grid gap-2 py-4">
-        <button type="button" name="" id="barchart-apply" class="btn btn-primary rounded-0">Применить</button>
+        <button type="button" name="" id="debt-apply" class="btn btn-primary rounded-0">Применить</button>
       </div>
     </div>
   </section>
@@ -119,7 +119,7 @@
       <p>Просмотр доступных команд и описание функций.</p>
 
       <div class="d-grid gap-2 pt-3">
-        <button type="button" name="" id="barchart-apply" class="btn btn-primary rounded-0">Применить</button>
+        <button type="button" name="" id="help-apply" class="btn btn-primary rounded-0">Применить</button>
       </div>
     </div>
   </section>
@@ -169,12 +169,15 @@
 
     tg.expand();
     let barChartApplyButton = document.getElementById("barchart-apply");
-    let selectedCriteria = document.getElementById("barchart-criteria-filter");
+    let debtApplyButton = document.getElementById("debt-apply");
+    let helpApplyButton = document.getElementById("help-apply");
+    let selectedBarchartCriteria = document.getElementById("barchart-criteria-filter");
+    let selectedDebtCriteria = document.getElementById("debt-criteria-filter");
     barChartApplyButton.addEventListener("click", () => {
       let barChart = 'barChart';
       let requestDate = document.getElementById("barchart-request-date").value;
       let selectedFactory = document.getElementById("barchart-factory").value;
-      const selectedValues = Array.from(selectedCriteria.options)
+      const selectedValues = Array.from(selectedBarchartCriteria.options)
         .filter(option => option.selected)
         .map(option => option.text);
       let data = {
@@ -182,6 +185,30 @@
         localDate: new Date(requestDate).toISOString().substring(0, 10),
         criteria: selectedValues,
         factory: selectedFactory
+      };
+      tg.sendData(JSON.stringify(data));
+    });
+
+    debtApplyButton.addEventListener("click", () => {
+      let debt = 'debt';
+      let requestDate = document.getElementById("debt-request-date").value;
+      let selectedFactory = document.getElementById("debt-factory").value;
+      const selectedValues = Array.from(selectedDebtCriteria.options)
+        .filter(option => option.selected)
+        .map(option => option.text);
+      let data = {
+        action: debt,
+        localDate: new Date(requestDate).toISOString().substring(0, 10),
+        criteria: selectedValues,
+        factory: selectedFactory
+      };
+      tg.sendData(JSON.stringify(data));
+    });
+
+    helpApplyButton.addEventListener("click", () => {
+      let help = 'help';
+      let data = {
+        action: help,
       };
       tg.sendData(JSON.stringify(data));
     });
