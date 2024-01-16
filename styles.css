@@ -1,7 +1,3 @@
-body {
-  overflow: hidden;
-}
-
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:visited {
@@ -27,6 +23,17 @@ body {
 
 .navbar {
   background-color: var(--bs-body-bg);
+  height: 40px;
+  padding-top: 4px;
+}
+
+.navbar-brand {
+  padding-top: 0px;
+}
+
+.hamburger{
+  position: fixed;
+  display: flex;
 }
 
 .nav-icon {
