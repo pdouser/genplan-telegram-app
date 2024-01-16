@@ -21,7 +21,7 @@
   <nav class="navbar bg-body-tertiary fixed-top pb-1">
     <div class="container-fluid">
       <span class="navbar-brand">
-        <h2><i id="hamburger" class="bi bi-list" type="button" data-bs-toggle="offcanvas"
+        <h2><i id="hamburger" class="bi bi-list px-2" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></i></h2>
       </span>
 
@@ -81,6 +81,11 @@
         <option value="5">Духовки</option>
       </select>
 
+      <div class="form-check-sm form-switch pt-2">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Добавить таблицу отклонений</label>
+      </div>
+      
       <div class="d-grid gap-2 py-4">
         <button type="button" name="" id="barchart-apply" class="btn btn-primary rounded-0">Применить</button>
       </div>
@@ -144,12 +149,44 @@
 
   <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 id="offcanvasRightLabel">Дополнительный функционал</h5>
+      <h5 id="offcanvasRightLabel">
+        <i class="bi bi-grid-3x3-gap-fill px-3"></i>Задачи:</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      ...
+
+      <div class="container px-4" id="icon-grid">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+          <div class="col d-flex align-items-start">
+            <div>
+              <i class="bi bi-table flex-shrink-0 me-1"></i>
+              <span>Очередность по графику (БЗГА)</span>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <div>
+              <i class="bi bi-stickies-fill  flex-shrink-0 me-1"></i>
+              <span>Сообщения по подг. пр-ва (БЗГА)</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="col">
+    <a href="#feature-4" class="nav__link p-1" id="">
+      <i class="nav-icon bi bi-table"></i>
+      <span class="nav__text">ОЧЕРЕДНОСТЬ ПО ГРАФИКУ (БЗГА)</span>
+    </a>
+    <a href="#feature-5" class="nav__link nav-icon" id="">
+      <i class="nav-icon bi bi-stickies-fill"></i>
+      <span class="nav__text">СООБЩЕНИЯ ПО ПОДГ. ПР-ВА (БЗГА)</span>
+    </a>
+  </div>
+
+
+  </div>
   </div>
 
   <nav class="nav-down">
