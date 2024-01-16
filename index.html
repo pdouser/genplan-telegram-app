@@ -180,14 +180,12 @@
       document.getElementById('barchart-nav-link').click();
       if (tg.themeParams.bg_color == "#ffffff") {
         document.documentElement.setAttribute('data-bs-theme', 'ligth');
-        location.reload();
       }
     }
 
     Telegram.WebApp.onEvent('themeChanged', function () {
       if (tg.themeParams.bg_color == "#ffffff") {
         document.documentElement.setAttribute('data-bs-theme', 'ligth');
-        location.reload();
       }
     });
     tg.expand();
