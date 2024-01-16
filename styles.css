@@ -51,6 +51,11 @@
   overflow-x: auto;
 }
 
+.nav-offcanvas {
+  background-color: #e50d43;
+  width: 20rem;
+ }
+
 .nav__link {
   display: flex;
   flex-direction: column;
@@ -87,4 +92,8 @@
 
 .section__height {
   height: 100vh;
+}
+
+.offcanvas-start {
+  --bs-offcanvas-width: 300px;
 }
