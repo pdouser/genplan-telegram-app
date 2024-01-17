@@ -130,7 +130,7 @@
     </div>
   </section>
 
-  <section class="container section section__height">
+  <section class="container section section__height section-last">
     <div class="container px-4 py-3" id="feature-3">
       <div class="row g-4 pt-3 row-cols-1">
         <h3 class="fs-2 text-body-emphasis">
@@ -198,8 +198,7 @@
     let tg = window.Telegram.WebApp;
     window.onload = function () {
       dateFormat();
-      document.documentElement.style.overflow = 'hidden';
-      document.getElementById('barchart-nav-link').click();
+      scrollBarsConfigure();
       if (tg.themeParams.bg_color == "#ffffff") {
         document.documentElement.setAttribute('data-bs-theme', 'ligth');
       }
@@ -222,19 +221,7 @@
     let selectedDebtCriteria = document.getElementById("debt-criteria-filter");
 
     addEventListener("resize", (event) => {
-      if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
-        var elems = document.getElementsByClassName('section__height');
-        document.documentElement.style.overflow = 'hidden';
-
-        for (var i = 0; i < elems.length; i++) {
-          elems[i].style['height'] = "100vh";
-        }
-      } else {
-        var elems = document.getElementsByClassName('section__height');
-        document.documentElement.style.overflow = 'scroll';
-        for (var i = 0; i < elems.length; i++) { elems[i].style['height'] = ""; }
-      }
-      document.getElementById('barchart-nav-link').click();
+      scrollBarsConfigure();
     }
     );
 
