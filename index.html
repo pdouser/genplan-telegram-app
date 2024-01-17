@@ -32,8 +32,12 @@
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <p>Производственная информация.</p>
-
+          <p>Информация по производству продукции.</p>
+          <div>
+            <p><i class="bi bi-person-circle"></i>
+              <span id="logged-user">User</span><br>
+          </div>
+          </p>
           <span class="badge rounded-pill text-bg-danger">Версия 0.0.1</span>
 
         </div>
@@ -154,13 +158,13 @@
       <div class="container px-4" id="icon-grid">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
           <div class="col d-flex align-items-start">
-            <div id="shifttasks-apply">
+            <div type="button" id="shifttasks-apply">
               <i class="bi bi-table flex-shrink-0 me-1"></i>
               <span>Очередность по графику (БЗГА)</span>
             </div>
           </div>
           <div class="col d-flex align-items-start">
-            <div id="messages-apply">
+            <div type="button" id="messages-apply">
               <i class="bi bi-stickies-fill  flex-shrink-0 me-1"></i>
               <span>Сообщения по подг. пр-ва (БЗГА)</span>
             </div>
@@ -199,6 +203,8 @@
       if (tg.themeParams.bg_color == "#ffffff") {
         document.documentElement.setAttribute('data-bs-theme', 'ligth');
       }
+      document.getElementById("logged-user").textContent = tg.initDataUnsafe.user.first_name + ' / '
+        + tg.initDataUnsafe.user.username;
     }
 
     Telegram.WebApp.onEvent('themeChanged', function () {
