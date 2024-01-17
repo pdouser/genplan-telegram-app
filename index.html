@@ -204,9 +204,6 @@
         document.documentElement.setAttribute('data-bs-theme', 'ligth');
       }
     }
-    
-    document.getElementById("logged-user").textContent = tg.initDataUnsafe.user.first_name + ' / '
-        + tg.initDataUnsafe.user.username;
 
     Telegram.WebApp.onEvent('themeChanged', function () {
       if (tg.themeParams.bg_color == "#ffffff") {
